@@ -83,4 +83,12 @@
 
     <!-- Pocket Lock --> 
     <string name="pocket_lock_message_long_press">Press and hold power button to unlock</string>
+
+    <!-- Defines the actions shown in advanced reboot submenu -->
+    <string-array name="config_restartActionsList">
+        <item>restart</item>
+        <item>restart_recovery</item>
+        <item>restart_bootloader</item>
+     </string-array>
+
 </resources>
