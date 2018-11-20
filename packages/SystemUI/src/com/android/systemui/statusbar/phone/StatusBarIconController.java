@@ -47,6 +47,7 @@ import com.android.systemui.statusbar.StatusBarWifiView;
 import com.android.systemui.statusbar.StatusIconDisplayable;
 import com.android.systemui.statusbar.phone.StatusBarSignalPolicy.MobileIconState;
 import com.android.systemui.statusbar.phone.StatusBarSignalPolicy.WifiIconState;
+import com.android.systemui.statusbar.policy.NetworkTrafficSB;
 import com.android.systemui.util.Utils.DisableStateTracker;
 
 import java.util.List;
@@ -359,8 +360,10 @@ public interface StatusBarIconController {
         }
 
         public void onSetIcon(int viewIndex, StatusBarIcon icon) {
-            StatusBarIconView view = (StatusBarIconView) mGroup.getChildAt(viewIndex);
-            view.set(icon);
+            View view = mGroup.getChildAt(viewIndex);
+            if (view instanceof StatusBarIconView) {
+                ((StatusBarIconView) view).set(icon);
+            }
         }
 
         public void onSetIconHolder(int viewIndex, StatusBarIconHolder holder) {
