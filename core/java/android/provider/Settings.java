@@ -5248,6 +5248,14 @@ public final class Settings {
          */
         public static final String SETTINGS_SPACER = "settings_spacer";
 
+        /**
+         * Force full screen for devices with cutout
+         * @hide
+         */
+        public static final String FORCE_FULLSCREEN_CUTOUT_APPS = "force_full_screen_cutout_apps";
+
+        /** @hide */
+        private static final Validator FORCE_FULLSCREEN_CUTOUT_APPS_VALIDATOR = ANY_STRING_VALIDATOR;
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -5345,6 +5353,7 @@ public final class Settings {
             QS_LAYOUT_COLUMNS_LANDSCAPE,
             QS_LAYOUT_COLUMNS,
             CENTER_NOTIFICATION_HEADERS,
+            FORCE_FULLSCREEN_CUTOUT_APPS,
         };
 
         /**
@@ -5520,6 +5529,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(VOLUME_LINK_NOTIFICATION);
             PRIVATE_SETTINGS.add(SHOW_VOLTE_ICON);
             PRIVATE_SETTINGS.add(VOLTE_ICON_STYLE);
+            PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);
         }
 
         /**
@@ -5675,6 +5685,7 @@ public final class Settings {
             VALIDATORS.put(SHOW_VOLTE_ICON, SHOW_VOLTE_ICON_VALIDATOR);
             VALIDATORS.put(VOLTE_ICON_STYLE, VOLTE_ICON_STYLE_VALIDATOR);
             VALIDATORS.put(CENTER_NOTIFICATION_HEADERS, CENTER_NOTIFICATION_HEADERS_VALIDATOR);
+            VALIDATORS.put(FORCE_FULLSCREEN_CUTOUT_APPS, FORCE_FULLSCREEN_CUTOUT_APPS_VALIDATOR);
         }
 
         /**
