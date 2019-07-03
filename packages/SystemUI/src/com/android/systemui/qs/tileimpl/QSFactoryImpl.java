@@ -52,6 +52,7 @@ import com.android.systemui.qs.tiles.SyncTile;
 import com.android.systemui.qs.tiles.UiModeNightTile;
 import com.android.systemui.qs.tiles.SoundTile;
 import com.android.systemui.qs.tiles.UserTile;
+import com.android.systemui.qs.tiles.VpnTile;
 import com.android.systemui.qs.tiles.WifiTile;
 import com.android.systemui.qs.tiles.WorkModeTile;
 import com.android.systemui.util.leak.GarbageMonitor;
@@ -93,7 +94,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<GamingModeTile> mGamingModeTileProvider;
     private final Provider<SoundTile> mSoundTileProvider;
     private final Provider<SyncTile> mSyncTileProvider;
-
+    private final Provider<VpnTile> mVpnTileProvider;
     private QSTileHost mHost;
 
     @Inject
@@ -124,7 +125,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<HeadsUpTile> headsUpTileProvider,
             Provider<GamingModeTile> gamingModeTileProvider,
             Provider<SoundTile> soundTileProvider,
-            Provider<SyncTile> syncTileProvider) {
+            Provider<SyncTile> syncTileProvider,
+            Provider<VpnTile> vpnTileProvider) {
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
         mCellularTileProvider = cellularTileProvider;
@@ -153,6 +155,7 @@ public class QSFactoryImpl implements QSFactory {
         mGamingModeTileProvider = gamingModeTileProvider;
         mSoundTileProvider = soundTileProvider;
         mSyncTileProvider = syncTileProvider;
+        mVpnTileProvider = vpnTileProvider;
     }
 
     public void setHost(QSTileHost host) {
@@ -224,6 +227,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mSoundTileProvider.get();
             case "sync":
                 return mSyncTileProvider.get();
+            case "vpn":
+                return mVpnTileProvider.get();
         }
 
         // Intent tiles.
