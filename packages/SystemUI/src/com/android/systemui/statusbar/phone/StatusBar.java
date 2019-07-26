@@ -3957,6 +3957,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.GAMING_MODE_HEADSUP_TOGGLE),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LESS_BORING_HEADS_UP),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -3967,7 +3970,8 @@ public class StatusBar extends SystemUI implements DemoMode,
         public void update() {
             setStatusDoubleTapToSleep();
             setGamingMode();
-        }
+	    setUseLessBoringHeadsUp();
+	}
     }
 
     private void setStatusDoubleTapToSleep() {
@@ -3984,6 +3988,13 @@ public class StatusBar extends SystemUI implements DemoMode,
                 Settings.System.GAMING_MODE_HEADSUP_TOGGLE, 1,
                 UserHandle.USER_CURRENT) == 1;
         mNotificationInterruptionStateProvider.setGamingPeekMode(mGamingModeActivated && mHeadsUpDisabled);
+    }
+
+    private void setUseLessBoringHeadsUp() {
+        boolean lessBoringHeadsUp = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.LESS_BORING_HEADS_UP, 0,
+                UserHandle.USER_CURRENT) == 1;
+        mNotificationInterruptionStateProvider.setUseLessBoringHeadsUp(lessBoringHeadsUp);
     }
 
     public int getWakefulnessState() {
