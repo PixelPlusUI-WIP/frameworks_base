@@ -199,6 +199,7 @@ import android.view.autofill.AutofillManagerInternal;
 
 import com.android.internal.R;
 import com.android.internal.accessibility.AccessibilityShortcutController;
+import com.android.internal.custom.longshot.ILongScreenshotManager;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.os.DeviceKeyHandler;
@@ -217,6 +218,7 @@ import com.android.server.inputmethod.InputMethodManagerInternal;
 import com.android.server.policy.keyguard.KeyguardServiceDelegate;
 import com.android.server.policy.keyguard.KeyguardServiceDelegate.DrawnListener;
 import com.android.server.policy.keyguard.KeyguardStateMonitor.StateCallback;
+import com.android.server.policy.pocket.PocketLock;
 import com.android.server.statusbar.StatusBarManagerInternal;
 import com.android.server.vr.VrManagerInternal;
 import com.android.server.wm.ActivityTaskManagerInternal;
@@ -225,6 +227,8 @@ import com.android.server.wm.AppTransition;
 import com.android.server.wm.DisplayPolicy;
 import com.android.server.wm.DisplayRotation;
 import com.android.server.wm.WindowManagerInternal;
+import android.pocket.PocketManager;
+import android.pocket.IPocketCallback;
 import com.android.server.wm.WindowManagerInternal.AppTransitionListener;
 
 import dalvik.system.PathClassLoader;
@@ -626,6 +630,30 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private final List<DeviceKeyHandler> mDeviceKeyHandlers = new ArrayList<>();
 
+    private PocketManager mPocketManager;
+    private PocketLock mPocketLock;
+    private boolean mPocketLockShowing;
+    private boolean mIsDeviceInPocket;
+    private final IPocketCallback mPocketCallback = new IPocketCallback.Stub() {
+
+        @Override
+        public void onStateChanged(boolean isDeviceInPocket, int reason) {
+            boolean wasDeviceInPocket = mIsDeviceInPocket;
+            if (reason == PocketManager.REASON_SENSOR) {
+                mIsDeviceInPocket = isDeviceInPocket;
+            } else {
+                mIsDeviceInPocket = false;
+            }
+            if (wasDeviceInPocket != mIsDeviceInPocket) {
+                handleDevicePocketStateChanged();
+                //if (mKeyHandler != null) {
+                    //mKeyHandler.setIsInPocket(mIsDeviceInPocket);
+                //}
+            }
+        }
+
+    };
+    
     private static final int MSG_DISPATCH_MEDIA_KEY_WITH_WAKE_LOCK = 3;
     private static final int MSG_DISPATCH_MEDIA_KEY_REPEAT_WITH_WAKE_LOCK = 4;
     private static final int MSG_KEYGUARD_DRAWN_COMPLETE = 5;
@@ -1451,7 +1479,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         @Override
         public void run() {
-            mDefaultDisplayPolicy.takeScreenshot(mScreenshotType);
+            boolean dockMinimized = mWindowManagerInternal.isMinimizedDock();
+            if (!mPocketLockShowing) {
+                mDefaultDisplayPolicy.takeScreenshot(mScreenshotType, dockMinimized);
+            }
         }
     }
 
@@ -1464,6 +1495,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     void showGlobalActionsInternal() {
+        stopLongshot();
         if (mGlobalActions == null) {
             mGlobalActions = new GlobalActions(mContext, mWindowManagerFuncs);
         }
@@ -1472,6 +1504,30 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         // since it took two seconds of long press to bring this up,
         // poke the wake lock so they have some time to see the dialog.
         mPowerManager.userActivity(SystemClock.uptimeMillis(), false);
+    }
+
+    private void stopLongshot() {
+        ILongScreenshotManager shot = ILongScreenshotManager.Stub.asInterface(ServiceManager.getService(Context.LONGSCREENSHOT_SERVICE));
+        if (shot != null) {
+            try {
+                if (shot.isLongshotMode()) {
+                    shot.stopLongshot();
+                }
+            } catch (RemoteException e) {
+                Slog.d(TAG, e.toString());
+            }
+        }
+    }
+
+    @Override
+    public void stopLongshotConnection() {
+        mDefaultDisplayPolicy.stopLongshotConnection();
+    }
+
+    @Override
+    public void takeOPScreenshot(int type) {
+        mScreenshotRunnable.setScreenshotType(type);
+        mHandler.post(mScreenshotRunnable);
     }
 
     boolean isDeviceProvisioned() {
