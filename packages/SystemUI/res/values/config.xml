@@ -516,4 +516,6 @@
     <!--  Flag to turn on the rendering of the above path or not  -->
     <bool name="config_enableDisplayCutoutProtection">false</bool>
 
+    <!-- Whether SystemUI ignores notch -->
+    <bool name="hide_view_behind_notch">false</bool>
 </resources>
