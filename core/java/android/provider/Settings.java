@@ -4540,13 +4540,6 @@ public final class Settings {
 	private static final Validator QS_BLUR_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
-         * Whether user is allowed to pull down quick settings on secure keyguard.
-         * @hide
-         */
-        public static final String STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD =
-                "status_bar_locked_on_secure_keyguard";
-
-        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -9041,6 +9034,13 @@ public final class Settings {
          * @hide
          */
         public static final String POWER_MENU_ACTIONS = "power_menu_actions";
+
+	/** 
+	 * Whether user is allowed to pull down quick settings on secure keyguard.
+	 * @hide
+         */
+        public static final String STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD =
+		"status_bar_locked_on_secure_keyguard";
 
         /**
          * This are the settings to be backed up.
