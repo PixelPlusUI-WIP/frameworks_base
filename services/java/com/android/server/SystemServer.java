@@ -119,6 +119,7 @@ import com.android.server.os.BugreportManagerService;
 import com.android.server.os.DeviceIdentifiersPolicyService;
 import com.android.server.os.SchedulingPolicyService;
 import com.android.server.pocket.PocketService;
+import com.android.server.pocket.PocketBridgeService;
 import com.android.server.pm.BackgroundDexOptService;
 import com.android.server.pm.CrossProfileAppsService;
 import com.android.server.pm.DynamicCodeLoggingService;
@@ -1833,7 +1834,15 @@ public final class SystemServer {
             traceBeginAndSlog("StartPocketService");
             mSystemServiceManager.startService(PocketService.class);
             traceEnd();
-        }
+            }
+
+            // Pocket Bridge Service
+            if (!context.getResources().getString(
+                    com.android.internal.R.string.config_pocketBridgeSysfsInpocket).isEmpty()) {
+                traceBeginAndSlog("StartPocketBridgeService");
+                mSystemServiceManager.startService(PocketBridgeService.class);
+                traceEnd();
+            }
 
         if (!isWatch) {
             traceBeginAndSlog("StartMediaProjectionManager");
