@@ -3977,6 +3977,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.BACK_GESTURE_HAPTIC),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.SHOW_BACK_ARROW_GESTURE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -3991,6 +3994,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             setHeadsUpStoplist();
             setHeadsUpBlacklist();
             setHapticFeedbackForBackGesture();
+            setHideArrowForBackGesture();
         }
     }
 
@@ -4030,6 +4034,12 @@ public class StatusBar extends SystemUI implements DemoMode,
     private void setHapticFeedbackForBackGesture() {
         if (getNavigationBarView() != null) {
             getNavigationBarView().updateBackGestureHaptic();
+        }
+    }
+
+    private void setHideArrowForBackGesture() {
+        if (getNavigationBarView() != null) {
+            getNavigationBarView().updateBackArrowForGesture();
         }
     }
 
