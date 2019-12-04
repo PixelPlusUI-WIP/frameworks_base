@@ -55,6 +55,9 @@ abstract class SystemUIDefaultModule {
     }
 
     @Binds
+    abstract EnhancedEstimates bindEnhancedEstimates(EnhancedEstimatesImpl enhancedEstimates);
+
+    @Binds
     abstract DockManager bindDockManager(DockManagerImpl dockManager);
 
     @Binds
