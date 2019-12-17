@@ -25,6 +25,7 @@ LOCAL_REQUIRED_MODULES := \
 	AccentColorGreenOverlay \
 	AccentColorPurpleOverlay \
 	AccentColorPornhubOverlay \
+	AccentColorMIUIOverlay \
 	AccentColorTealOverlay \
 	AccentColorRedOverlay \
 	AccentColorQGreenOverlay \
