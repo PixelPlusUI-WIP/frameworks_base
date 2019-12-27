@@ -4562,6 +4562,13 @@ public final class Settings {
          */
         public static final String SWIPE_TO_SCREENSHOT = "swipe_to_screenshot";
 
+        /** @hide */
+        public static final String GESTURE_PILL_TOGGLE = "gesture_pill_toggle";
+
+        /** @hide */
+        private static final Validator GESTURE_PILL_TOGGLE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -4627,7 +4634,8 @@ public final class Settings {
             DISPLAY_COLOR_MODE,
             ALARM_ALERT,
             NOTIFICATION_LIGHT_PULSE,
-	    QS_BLUR
+	    QS_BLUR,
+	    GESTURE_PILL_TOGGLE
         };
 
         /**
@@ -4752,7 +4760,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BUTTON_BRIGHTNESS);
             PRIVATE_SETTINGS.add(PROXIMITY_ON_WAKE);
 	    PRIVATE_SETTINGS.add(POCKET_JUDGE);
-        }
+            PRIVATE_SETTINGS.add(GESTURE_PILL_TOGGLE);
+	}
 
         /**
          * These are all public system settings
@@ -4851,6 +4860,7 @@ public final class Settings {
             VALIDATORS.put(BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED, BUTTON_BACKLIGHT_ONLY_WHEN_PRESSED_VALIDATOR);
 	    VALIDATORS.put(POCKET_JUDGE, POCKET_JUDGE_VALIDATOR);
             VALIDATORS.put(QS_BLUR, QS_BLUR_VALIDATOR);
+            VALIDATORS.put(GESTURE_PILL_TOGGLE, GESTURE_PILL_TOGGLE_VALIDATOR);
         }
 
         /**
