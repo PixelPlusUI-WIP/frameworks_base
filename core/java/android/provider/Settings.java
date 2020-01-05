@@ -9943,12 +9943,20 @@ public final class Settings {
          */
         public static final String POWER_MENU_ACTIONS = "power_menu_actions";
 
-	/** 
+	/**
 	 * Whether user is allowed to pull down quick settings on secure keyguard.
 	 * @hide
          */
         public static final String STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD =
 		"status_bar_locked_on_secure_keyguard";
+
+	/**
+         * Whether to hide lock icon on lockscreen
+         * {@hide}
+         */
+        public static final String HIDE_LOCKICON = "hide_lockicon";
+
+        private static final Validator HIDE_LOCKICON_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
          * This are the settings to be backed up.
@@ -10088,6 +10096,7 @@ public final class Settings {
             AWARE_TAP_PAUSE_GESTURE_COUNT,
             AWARE_TAP_PAUSE_TOUCH_COUNT,
             TORCH_POWER_BUTTON_GESTURE,
+            HIDE_LOCKICON
         };
 
         /**
@@ -10287,6 +10296,7 @@ public final class Settings {
             VALIDATORS.put(AWARE_TAP_PAUSE_TOUCH_COUNT, NON_NEGATIVE_INTEGER_VALIDATOR);
             VALIDATORS.put(TAP_GESTURE, TAP_GESTURE_VALIDATOR);
             VALIDATORS.put(TORCH_POWER_BUTTON_GESTURE, TORCH_POWER_BUTTON_GESTURE_VALIDATOR);
+            VALIDATORS.put(HIDE_LOCKICON, HIDE_LOCKICON_VALIDATOR);
         }
 
         /**
