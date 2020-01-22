@@ -1243,6 +1243,9 @@ public class StatusBar extends SystemUI implements DemoMode,
                 || action == MotionEvent.ACTION_CANCEL) {
             mHandler.removeCallbacks(mLongPressBrightnessChange);
         }
+    
+    public static void setHasClearableNotifications(boolean state) {
+        mClearableNotifications = state;
     }
 
     public static void setDismissAllVisible(boolean visible) {
