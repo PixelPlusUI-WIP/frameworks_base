@@ -84,6 +84,7 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -1243,6 +1244,10 @@ public class StatusBar extends SystemUI implements DemoMode,
                 || action == MotionEvent.ACTION_CANCEL) {
             mHandler.removeCallbacks(mLongPressBrightnessChange);
         }
+    }
+
+    public static void setHasClearableNotifications(boolean state) {
+        mClearableNotifications = state;
     }
 
     public static void setDismissAllVisible(boolean visible) {
