@@ -215,6 +215,12 @@ public class EdgeBackGestureHandler implements DisplayListener {
         updateCurrentUserResources(currentUserContext.getResources());
     }
 
+    public void setStateForBackGestureHaptic() {
+        if (mEdgePanel != null) {
+            mEdgePanel.setBackGestureHaptic();
+        }
+    }
+
     private void disposeInputChannel() {
         if (mInputEventReceiver != null) {
             mInputEventReceiver.dispose();
