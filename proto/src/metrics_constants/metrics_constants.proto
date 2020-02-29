@@ -7435,5 +7435,8 @@ message MetricsEvent {
 
     // PixelPlusUI Universal Constant
     PPUI_SETTINGS = 2000;
+
+    // Panel for Bluetooth
+    PANEL_BLUETOOTH = 9004;
   }
 }
