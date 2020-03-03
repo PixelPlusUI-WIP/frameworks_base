@@ -4961,6 +4961,15 @@ public final class Settings {
         private static final Validator BACK_GESTURE_HAPTIC_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
+         * Width of the navigation handle.
+         * @hide
+         */
+        public static final String NAVIGATION_HANDLE_WIDTH = "navigation_handle_width";
+
+        /** @hide */
+        private static final Validator NAVIGATION_HANDLE_WIDTH_VALIDATOR = ANY_INTEGER_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5052,7 +5061,8 @@ public final class Settings {
             HEADS_UP_BLACKLIST_VALUES,
             BACK_GESTURE_HAPTIC,
             BACK_GESTURE_HEIGHT,
-        };
+            NAVIGATION_HANDLE_WIDTH,
+	};
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
@@ -5203,7 +5213,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(HEADS_UP_BLACKLIST_VALUES);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
-        }
+            PRIVATE_SETTINGS.add(NAVIGATION_HANDLE_WIDTH);
+	}
 
         /**
          * These are all public system settings
@@ -5332,7 +5343,8 @@ public final class Settings {
             VALIDATORS.put(HEADS_UP_BLACKLIST_VALUES, HEADS_UP_BLACKLIST_VALUES_VALIDATOR);
             VALIDATORS.put(BACK_GESTURE_HAPTIC, BACK_GESTURE_HAPTIC_VALIDATOR);
             VALIDATORS.put(BACK_GESTURE_HEIGHT, BACK_GESTURE_HEIGHT_VALIDATOR);
-        }
+            VALIDATORS.put(NAVIGATION_HANDLE_WIDTH, NAVIGATION_HANDLE_WIDTH_VALIDATOR);
+	}
 
         /**
          * These entries are considered common between the personal and the managed profile,
