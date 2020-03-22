@@ -112,6 +112,7 @@ LOCAL_REQUIRED_MODULES := \
 	IconShapeRoundedHexagonOverlay \
         IconShapeAncient1Overlay \
         IconShapeAncient2Overlay \
+	IconShapeAncient3Overlay \
 	IconShapeRoundedRectOverlay \
 	IconShapeSquircleOverlay \
 	IconShapeTeardropOverlay \
