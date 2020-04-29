@@ -112,6 +112,7 @@ public class QSTileBaseView extends com.android.systemui.plugins.qs.QSTileView {
         setBackground(mTileBackground);
 
         mColorActive = Utils.getColorAttrDefaultColor(context, android.R.attr.colorAccent);
+        mColorActiveAlpha = adjustAlpha(mColorActive, 0.2f);
         mColorDisabled = Utils.getDisabled(context,
                 Utils.getColorAttrDefaultColor(context, android.R.attr.textColorTertiary));
         mColorInactive = Utils.getColorAttrDefaultColor(context, android.R.attr.textColorSecondary);
@@ -242,7 +243,11 @@ public class QSTileBaseView extends com.android.systemui.plugins.qs.QSTileView {
     private int getCircleColor(int state) {
         switch (state) {
             case Tile.STATE_ACTIVE:
-                return mColorActive;
+                if (QSTileView.getTintEnabled()) {
+                    return mColorActiveAlpha;
+                } else {
+                    return mColorActive;
+                }
             case Tile.STATE_INACTIVE:
             case Tile.STATE_UNAVAILABLE:
                 return mColorDisabled;
