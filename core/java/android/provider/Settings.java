@@ -5264,6 +5264,14 @@ public final class Settings {
                 "lockscreen_quick_unlock_control";
 
         /**
+         * Whether to use tint on QS tiles
+         * @hide
+         */
+        public static final String TINT_QS_TILES = "tint_qs_tiles";
+
+        private static final Validator TINT_QS_TILES_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5360,6 +5368,7 @@ public final class Settings {
             QS_LAYOUT_COLUMNS,
             CENTER_NOTIFICATION_HEADERS,
             FORCE_FULLSCREEN_CUTOUT_APPS,
+            TINT_QS_TILES,
         };
 
         /**
@@ -5690,6 +5699,7 @@ public final class Settings {
             VALIDATORS.put(FOD_GESTURE, FOD_GESTURE_VALIDATOR);
             VALIDATORS.put(CENTER_NOTIFICATION_HEADERS, CENTER_NOTIFICATION_HEADERS_VALIDATOR);
             VALIDATORS.put(FORCE_FULLSCREEN_CUTOUT_APPS, FORCE_FULLSCREEN_CUTOUT_APPS_VALIDATOR);
+            VALIDATORS.put(TINT_QS_TILES, TINT_QS_TILES_VALIDATOR);
         }
 
         /**

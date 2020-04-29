@@ -501,9 +501,7 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     private View mKeyguardStatusBar;
 
-    private static Context mStaticContext;
     private static ImageButton mDismissAllButton;
-    protected static NotificationPanelView mStaticNotificationPanel;
     public static boolean mClearableNotifications;
 
     // ensure quick settings is disabled until the current user makes it through the setup wizard
@@ -5048,6 +5046,9 @@ public class StatusBar extends SystemUI implements DemoMode,
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL),
+	            false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+		    Settings.System.TINT_QS_TILES),
                     false, this, UserHandle.USER_ALL);
         }
 
@@ -5057,8 +5058,13 @@ public class StatusBar extends SystemUI implements DemoMode,
             if (uri.equals(Settings.System.getUriFor(
                     Settings.System.NAVIGATION_BAR_SHOW))) {
                 updateNavigationBar();
+            } else if (uri.equals(Settings.System.getUriFor(Settings.System.TINT_QS_TILES))) {
+                if (mQSPanel != null) {
+                    mQSPanel.getHost().reloadAllTiles();
+                }
             }
-        }
+	    update();     
+       	}
 
         public void update() {
             setStatusDoubleTapToSleep();
