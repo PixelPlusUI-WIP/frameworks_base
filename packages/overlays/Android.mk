@@ -24,6 +24,19 @@ LOCAL_REQUIRED_MODULES := \
 	AccentColorSpaceOverlay \
 	AccentColorGreenOverlay \
 	AccentColorPurpleOverlay \
+	AccentColorMintOverlay \
+        AccentColorAmberOverlay \
+        AccentColorCandyRedOverlay \
+        AccentColorDdayGreenOverlay \
+        AccentColorFrenchBleuOverlay \
+        AccentColorHeirloomBleuOverlay \
+        AccentColorHolillusionOverlay \
+        AccentColorIllusionsPurpleOverlay \
+        AccentColorObfusBleuOverlay \
+        AccentColorOnePlusRedOverlay \
+        AccentColorSeasideMintOverlay \
+        AccentColorWarmthOrangeOverlay \
+        AccentColorPurpleOverlay \
 	AccentColorPornhubOverlay \
 	AccentColorMIUIOverlay \
 	AccentColorTealOverlay \
