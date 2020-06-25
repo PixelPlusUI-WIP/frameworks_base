@@ -19,6 +19,8 @@ LOCAL_MODULE := frameworks-base-overlays
 LOCAL_REQUIRED_MODULES := \
 	AccentColorBlackOverlay \
 	AccentColorCinnamonOverlay \
+	AccentColorCoralOverlay \
+	AccentColorFerrariRedOverlay \
 	AccentColorOceanOverlay \
 	AccentColorOrchidOverlay \
 	AccentColorSpaceOverlay \
