@@ -233,8 +233,8 @@ public class QSFactoryImpl implements QSFactory {
             case "sync":
                 return mSyncTileProvider.get();
             case "vpn":
-                return new SyncTile(mHost);
-            case "screenshot":
+                return mVpnTileProvider.get();
+	    case "screenshot":
                 return mScreenshotTileProvider.get();
         }
 
