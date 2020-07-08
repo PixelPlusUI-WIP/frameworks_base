@@ -33,13 +33,11 @@ import javax.inject.Inject;
 /** Quick settings tile: Screenshot **/
 public class ScreenshotTile extends QSTileImpl<BooleanState> {
 
-    private boolean mRegion;
+    private boolean mRegion = false;
 
     @Inject
     public ScreenshotTile(QSHost host) {
         super(host);
-        mRegion = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.SCREENSHOT_DEFAULT_MODE, 0, UserHandle.USER_CURRENT) == 1;
     }
 
     @Override
@@ -59,9 +57,6 @@ public class ScreenshotTile extends QSTileImpl<BooleanState> {
     @Override
     public void handleClick() {
         mRegion = !mRegion;
-        Settings.System.putIntForUser(mContext.getContentResolver(),
-                Settings.System.SCREENSHOT_DEFAULT_MODE, mRegion ? 1 : 0,
-                UserHandle.USER_CURRENT);
         refreshState();
     }
 
