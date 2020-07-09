@@ -191,12 +191,7 @@ public class QSIconViewImpl extends QSIconView {
                 int alpha = (int) (fromAlpha + (toAlpha - fromAlpha) * fraction);
                 int channel = (int) (fromChannel + (toChannel - fromChannel) * fraction);
 
-                if (QSTileView.getTintEnabled()) {
-                    setTint(iv, toColor);
-                } else {
-                    setTint(iv, Color.argb(alpha, channel, channel, channel));
-                }
-
+                setTint(iv, Color.argb(alpha, channel, channel, channel));
             });
             anim.addListener(new AnimatorListenerAdapter() {
                 @Override

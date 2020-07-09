@@ -5009,15 +5009,6 @@ public final class Settings {
         public static final String DISMISS_ALL_BUTTON = "dismiss_all_button";
 
         /**
-         * Whether to use tint on QS tiles
-         * @hide
-         */
-        public static final String TINT_QS_TILES = "tint_qs_tiles";
-
-        private static final Validator TINT_QS_TILES_VALIDATOR = BOOLEAN_VALIDATOR;
-
-
-        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5112,7 +5103,6 @@ public final class Settings {
             NAVIGATION_HANDLE_WIDTH,
             QS_LAYOUT_COLUMNS_LANDSCAPE,
             QS_LAYOUT_COLUMNS,
-            TINT_QS_TILES,
         };
 
         /**
@@ -5402,7 +5392,6 @@ public final class Settings {
                     QS_LAYOUT_COLUMNS_LANDSCAPE_VALIDATOR);
             VALIDATORS.put(QS_LAYOUT_COLUMNS, QS_LAYOUT_COLUMNS_VALIDATOR);
             VALIDATORS.put(VOLUME_LINK_NOTIFICATION, VOLUME_LINK_NOTIFICATION_VALIDATOR);
-            VALIDATORS.put(TINT_QS_TILES, TINT_QS_TILES_VALIDATOR);
         }
 
         /**
