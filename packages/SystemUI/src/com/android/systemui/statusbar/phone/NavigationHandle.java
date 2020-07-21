@@ -16,9 +16,10 @@
 
 package com.android.systemui.statusbar.phone;
 
+import static android.provider.Settings.System.NAVIGATION_HANDLE_WIDTH;
+
 import android.animation.ArgbEvaluator;
 import android.annotation.ColorInt;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -42,21 +43,16 @@ public class NavigationHandle extends View implements ButtonInterface {
     private final int mBottom;
     private final int mBaseWidth;
 
-    private final Resources mRes;
-    private final ContentResolver mResolver;
-    private final String WIDTH_SETTING = "navigation_handle_width";
-
     public NavigationHandle(Context context) {
         this(context, null);
     }
 
     public NavigationHandle(Context context, AttributeSet attr) {
         super(context, attr);
-        mRes = context.getResources();
-        mResolver = context.getContentResolver();
-        mRadius = mRes.getDimensionPixelSize(R.dimen.navigation_handle_radius);
-        mBottom = mRes.getDimensionPixelSize(R.dimen.navigation_handle_bottom);
-        mBaseWidth = mRes.getDimensionPixelSize(R.dimen.navigation_home_handle_width);
+        final Resources res = context.getResources();
+        mRadius = res.getDimensionPixelSize(R.dimen.navigation_handle_radius);
+        mBottom = res.getDimensionPixelSize(R.dimen.navigation_handle_bottom);
+        mBaseWidth = res.getDimensionPixelSize(R.dimen.navigation_home_handle_width);
 
         final int dualToneDarkTheme = Utils.getThemeAttr(context, R.attr.darkIconTheme);
         final int dualToneLightTheme = Utils.getThemeAttr(context, R.attr.lightIconTheme);
@@ -113,16 +109,18 @@ public class NavigationHandle extends View implements ButtonInterface {
     }
 
     private int getCustomWidth() {
-        int userSelection = Settings.System.getInt(mResolver,
-                Settings.System.NAVIGATION_HANDLE_WIDTH, 1);
-        if (userSelection == 1) {
+        /* 0: small (stock AOSP)
+           1: medium
+           2: long
+        */
+        int userSelection = Settings.System.getInt(getContext().getContentResolver(),
+                NAVIGATION_HANDLE_WIDTH, 0);
+        if (userSelection == 0) {
             return mBaseWidth;
-        } else if (userSelection == 2) {
+        } else if (userSelection == 1) {
             return (int) (1.33 * mBaseWidth);
-        } else if (userSelection == 3) {
-            return 2 * mBaseWidth;
         } else {
-            return 0;
+            return 2 * mBaseWidth;
         }
     }
 }
