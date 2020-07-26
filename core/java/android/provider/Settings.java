@@ -5009,13 +5009,6 @@ public final class Settings {
         public static final String DISMISS_ALL_BUTTON = "dismiss_all_button";
 
         /**
-         * Toggle for clipboard access toast.
-         * @hide
-         */
-
-        public static final String SHOW_CLIPBOARD_TOAST = "show_clipboard_toast";
-
-        /**
          * Use doubletap as doze pulse triggers
          * @hide
          */
