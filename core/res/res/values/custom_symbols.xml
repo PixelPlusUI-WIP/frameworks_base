@@ -108,15 +108,6 @@
     <java-symbol type="dimen" name="seekbar_track_material_radius" />
     <java-symbol type="dimen" name="seekbar_track_material_height" />
 
-    <!-- Switch Thumb -->
-    <java-symbol type="dimen" name="switch_thumb_material_anim_width" />
-    <java-symbol type="dimen" name="switch_thumb_material_anim_height" />
-    <java-symbol type="dimen" name="switch_thumb_material_anim_stroke_width" />
-
-    <!-- Switch Track Material -->
-    <java-symbol type="dimen" name="switch_track_material_height" />
-    <java-symbol type="dimen" name="switch_track_material_radius" />
-
     <!-- Enable face auth only when swiping security view -->
     <java-symbol type="bool" name="config_faceAuthOnlyOnSecurityView" />
 
