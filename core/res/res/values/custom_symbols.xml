@@ -103,11 +103,6 @@
     <java-symbol type="string" name="url_copy_success" />
     <java-symbol type="string" name="url_copy_failed" />
 
-    <!-- Seekbars -->
-    <java-symbol type="dimen" name="seekbar_track_material_width" />
-    <java-symbol type="dimen" name="seekbar_track_material_radius" />
-    <java-symbol type="dimen" name="seekbar_track_material_height" />
-
     <!-- Enable face auth only when swiping security view -->
     <java-symbol type="bool" name="config_faceAuthOnlyOnSecurityView" />
 
