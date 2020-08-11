@@ -18,7 +18,7 @@
         <shape android:shape="rectangle" 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <size android:height="13dp" android:width="5dp" />
-    <corners android:radius="@dimen/switch_track_material_radius" />
+    <corners android:radius="30dp" />
 	<gravity android:gravity="center_vertical" />
     <solid android:color="@android:color/transparent" />
     <stroke
