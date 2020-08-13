@@ -94,8 +94,7 @@ LOCAL_REQUIRED_MODULES := \
     FontSofiaSans \
     FontSofiaSansSemiCondensed \
     FontTinkerbell \
-    FontLinotte \
-        IconPackCircularAndroidOverlay \
+	IconPackCircularAndroidOverlay \
 	IconPackCircularPixelLauncherOverlay \
 	IconPackCircularPixelThemePickerOverlay \
 	IconPackCircularSettingsOverlay \
