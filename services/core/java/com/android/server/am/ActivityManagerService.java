@@ -7567,13 +7567,11 @@ public class ActivityManagerService extends IActivityManager.Stub
 
         //mUsageStatsService.monitorPackages();
 
-<<<<<<< HEAD
         // Gaming mode provider
         mGamingModeController = new GamingModeController(mContext);
-=======
-        // Force full screen for devices with cutout
+        
+	// Force full screen for devices with cutout
         mCutoutFullscreenController = new CutoutFullscreenController(mContext);
->>>>>>> 16732e67ccc... fwb: [1/2] Implement cutout force full screen
     }
 
     void startPersistentApps(int matchFlags) {
@@ -19109,7 +19107,9 @@ public class ActivityManagerService extends IActivityManager.Stub
     public boolean isSwipeToScreenshotGestureActive() {
         synchronized (this) {
             return mIsSwipeToScrenshotEnabled && SystemProperties.getBoolean("sys.android.screenshot", false);
-    
+        }
+    }
+
     @Override
     public boolean shouldForceCutoutFullscreen(String packageName) {
         synchronized (this) {
