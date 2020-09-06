@@ -5063,6 +5063,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                     mQSPanel.getHost().reloadAllTiles();
                 }
             }
+	    update();
         }
 
         public void update() {
