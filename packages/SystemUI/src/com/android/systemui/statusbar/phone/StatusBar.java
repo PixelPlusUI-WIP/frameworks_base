@@ -5047,6 +5047,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL),
+	            false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
 		    Settings.System.TINT_QS_TILES),
                     false, this, UserHandle.USER_ALL);
