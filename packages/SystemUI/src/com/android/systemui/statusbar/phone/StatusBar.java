@@ -500,7 +500,6 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     private View mKeyguardStatusBar;
 
-    private static Context mStaticContext;
     private static ImageButton mDismissAllButton;
     protected static NotificationPanelView mStaticNotificationPanel;
     public static boolean mClearableNotifications;
