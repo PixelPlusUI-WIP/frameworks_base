@@ -501,7 +501,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     private View mKeyguardStatusBar;
 
     private static ImageButton mDismissAllButton;
-    protected static NotificationPanelView mStaticNotificationPanel;
     public static boolean mClearableNotifications;
 
     // ensure quick settings is disabled until the current user makes it through the setup wizard
